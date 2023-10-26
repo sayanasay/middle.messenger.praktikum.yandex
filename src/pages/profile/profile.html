@@ -1,0 +1,69 @@
+{{#> layouts/page title='Профиль пользователя'}}
+{{#> layouts/layoutProfile}}
+<div class='profile'>
+  {{> avatar/avatar src='/src/assets/default.jpg'}}
+  <p class='profile__name'>Dow</p>
+  <form class='profile__form'>
+    {{> inputLarge/inputLarge
+    type='text'
+    name='email'
+    id='email'
+    placeholder=''
+    value='pochta@yandex.ru'
+    label='Почта'
+    readonly='true'
+    }}
+    {{> inputLarge/inputLarge
+    type='text'
+    name='login'
+    id='login'
+    placeholder=''
+    value='dowjones'
+    label='Логин'
+    readonly='true'
+    }}
+    {{> inputLarge/inputLarge
+    type='text'
+    name='first_name'
+    id='first_name'
+    placeholder=''
+    value='Dow'
+    label='Имя'
+    readonly='true'
+    }}
+    {{> inputLarge/inputLarge
+    type='text'
+    name='second_name'
+    id='second_name'
+    placeholder=''
+    value='Jones'
+    label='Фамилия'
+    readonly='true'
+    }}
+    {{> inputLarge/inputLarge
+    type='text'
+    name='display_name'
+    id='display_name'
+    placeholder=''
+    value='Dow'
+    label='Имя в чате'
+    readonly='true'
+    }}
+    {{> inputLarge/inputLarge
+    type='text'
+    name='phone'
+    id='phone'
+    placeholder=''
+    value='+7 (000) 000 00 00'
+    label='Телефон'
+    readonly='true'
+    }}
+  </form>
+  <div class='profile__links'>
+    <a href='/src/pages/profile/profile-edit.html' class='profile__link'>Изменить данные</a>
+    <a href='/src/pages/profile/profile-edit-password.html' class='profile__link'>Изменить пароль</a>
+    <a href='/' class='profile__link profile__link--red'>Выйти</a>
+  </div>
+</div>
+{{/ layouts/layoutProfile}}
+{{/ layouts/page}}

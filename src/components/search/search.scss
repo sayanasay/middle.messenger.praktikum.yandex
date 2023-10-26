@@ -1,0 +1,18 @@
+.search {
+  border: none;
+  font-size: 12px;
+  font-weight: 500;
+  line-height: 1;
+  padding: 10px 10px 10px 30px;
+  border-radius: 5px;
+  width: 290px;
+  background: url('/src/assets/search.svg') no-repeat 5px center var(--grey);
+  
+  &:focus-visible {
+    outline: none;
+  }
+
+  &::placeholder {
+    color: var(--grey-dark);
+  }
+}

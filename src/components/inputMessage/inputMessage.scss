@@ -1,0 +1,18 @@
+.input-message {
+  background-color: var(--grey);
+  border: none;
+  padding: 10px 20px;
+  font-size: 12px;
+  line-height: 1;
+  font-weight: 500;
+  width: 100%;
+  border-radius: 30px;
+
+  &::placeholder {
+    color: var(--grey-dark);
+  }
+
+  &:focus-visible {
+    outline: none;
+  }
+}

@@ -1,0 +1,15 @@
+<div class='chat-item'>
+  <img class='chat-item__avatar' src={{avatar}} />
+  <div class='chat-item__content'>
+    <div class='chat-item__name'>{{title}}</div>
+    {{#each messages}}
+      {{#if @last}}
+        <div class='chat-item__time'>{{this.time}}</div>
+        <div class='chat-item__message'>{{this.text}}</div>
+      {{/if}}
+    {{/each}}
+    {{#if unread}}
+      <div class='chat-item__count'>{{unread}}</div>
+    {{/if}}
+  </div>
+</div>
