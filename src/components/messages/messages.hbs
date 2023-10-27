@@ -1,3 +1,6 @@
+{{!-- <div class='nomessages'>
+  Выберите чат чтобы отправить сообщение
+</div> --}}
 <div class='messages'>
   <div class='messages__header'>
     <div class='messages__user'>
@@ -10,7 +13,7 @@
     </div>
     <img class='messages__settings' src='/src/assets/settings.svg' />
   </div>
-  <div class='messages__list'>
+  <ul class='messages__list'>
       {{#each chats}}
         {{#if @first}}
           {{#each messages}}
@@ -18,7 +21,7 @@
           {{/each}}
         {{/if}}
       {{/each}}
-  </div>
+  </ul>
   <div class='messages__footer'>
     <button class='messages__attach'>
       <img src='/src/assets/paperclip.svg' />

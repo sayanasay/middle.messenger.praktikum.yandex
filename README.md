@@ -33,5 +33,6 @@
 ```
 
 ## Дизайн
+[Figma](https://www.figma.com/file/VYqs1JUo3CXoCioIoc86mY/Chat?type=design&node-id=0%3A1&mode=design&t=jksor0rEvQ4IhVMX-1)
 
 ## Демоверсия
