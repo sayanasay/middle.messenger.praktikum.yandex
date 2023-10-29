@@ -1,0 +1,33 @@
+.container {
+  height: 100vh;
+  width: 100%;
+  display: flex;
+  overflow: hidden;
+
+  &-center {
+    justify-content: center;
+    align-items: center;
+  }
+}
+
+.left {
+  background-color: var(--grey-light);
+  border-right: 1px solid var(--grey);
+  width: 310px;
+  width: 64px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  transition: background-color 0.3s linear;
+
+  &:hover {
+    background-color: var(--blue-light);
+  }
+}
+
+.main {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}

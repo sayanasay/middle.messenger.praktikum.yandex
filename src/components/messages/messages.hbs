@@ -1,0 +1,34 @@
+{{!-- <div class='nomessages'>
+  Выберите чат чтобы отправить сообщение
+</div> --}}
+<div class='messages'>
+  <div class='messages__header'>
+    <div class='messages__user'>
+      {{#each chats}}
+        {{#if @first}}
+          <img class='messages__avatar' src={{avatar}} />
+          <span class='messages__name'>{{title}}</span>
+        {{/if}}
+      {{/each}}
+    </div>
+    <img class='messages__settings' src='/src/assets/settings.svg' />
+  </div>
+  <ul class='messages__list'>
+      {{#each chats}}
+        {{#if @first}}
+          {{#each messages}}
+            {{> message/message message=message}}
+          {{/each}}
+        {{/if}}
+      {{/each}}
+  </ul>
+  <div class='messages__footer'>
+    <button class='messages__attach'>
+      <img src='/src/assets/paperclip.svg' />
+    </button>
+    {{> inputMessage/inputMessage}}
+    <button class='messages__send'>
+      <img src='/src/assets/send.svg' />
+    </button>
+  </div>
+</div>

@@ -1,0 +1,14 @@
+.chat-list {
+  padding: 0 10px;
+  overflow-y: auto;
+  overflow-x: hidden;
+  height: calc(100% - 105px);
+
+  &::-webkit-scrollbar {
+    width: 4px;
+  }
+
+  &::-webkit-scrollbar-thumb {
+    background-color: var(--grey-dark);
+  }
+}
