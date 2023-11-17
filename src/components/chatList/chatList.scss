@@ -1,7 +1,6 @@
 .chat-list {
   padding: 0 10px;
-  overflow-y: auto;
-  overflow-x: hidden;
+  overflow: hidden auto;
   height: calc(100% - 105px);
 
   &::-webkit-scrollbar {
@@ -9,6 +8,6 @@
   }
 
   &::-webkit-scrollbar-thumb {
-    background-color: var(--grey-dark);
+    background: var(--grey-dark);
   }
 }

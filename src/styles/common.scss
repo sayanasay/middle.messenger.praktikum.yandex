@@ -13,3 +13,14 @@
   color: var(--black);
   font-size: 13px;
 }
+
+nav {
+  ul {
+    display: flex;
+  }
+
+  li {
+    margin: 0 10px;
+    list-style: none;
+  }
+}

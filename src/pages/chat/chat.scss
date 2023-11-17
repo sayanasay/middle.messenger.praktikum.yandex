@@ -37,6 +37,9 @@
 
     &-icon {
       margin-left: 8px;
+      width: 6px;
+      height: 10px;
+      background: url('/src/assets/arrow-link.svg') no-repeat center;
     }
 
     &:hover {
