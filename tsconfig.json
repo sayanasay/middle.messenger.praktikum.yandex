@@ -11,6 +11,6 @@
     "noUnusedParameters": true,
     "isolatedModules": true,
     "esModuleInterop": true,
-    "noEmit": true,
+    "noEmit": true
   }
 }
