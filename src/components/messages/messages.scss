@@ -45,6 +45,13 @@
     }
   }
 
+  &__settings {
+    width: 3px;
+    height: 34px;
+    background: url('/src/assets/settings.svg') no-repeat center;
+    cursor: pointer;
+  }
+
   &__footer {
     position: absolute;
     bottom: 0;
@@ -59,8 +66,17 @@
   }
 
   &__attach, &__send {
-    background: none;
+    width: 32px;
+    height: 32px;
     border: none;
     cursor: pointer;
+  }
+
+  &__attach {
+    background: url('/src/assets/paperclip.svg') no-repeat center;
+  }
+
+  &__send {
+    background: url('/src/assets/send.svg') no-repeat center;
   }
 }

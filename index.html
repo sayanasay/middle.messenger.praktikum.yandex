@@ -5,35 +5,38 @@
     <link rel="icon" type="image/svg+xml" href="" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Messenger</title>
+    <link rel='stylesheet' href='/src/styles.scss' />
   </head>
   <body>
     <nav>
       <ul>
         <li>
-          <a href="/src/pages/login/login.html">Login</a>
+          <a href="/login" data-nav='/login'>Login</a>
         </li>
         <li>
-          <a href="/src/pages/signup/signup.html">Signup</a>
+          <a href="/signup" data-nav='/signup'>Signup</a>
         </li>
         <li>
-          <a href="/src/pages/profile/profile.html">Profile</a>
+          <a href="/profile" data-nav="/profile">Profile</a>
         </li>
         <li>
-          <a href="/src/pages/profile/profile-edit.html">Profile-edit</a>
+          <a href="/profile-edit" data-nav="/profile-edit">Profile-edit</a>
         </li>
         <li>
-          <a href="/src/pages/profile/profile-edit-password.html">Profile-edit-password</a>
+          <a href="/edit-password" data-nav="/edit-password">Profile-edit-password</a>
         </li>
         <li>
-          <a href="/src/pages/error/404.html">404</a>
+          <a href="/404" data-nav="/404">404</a>
         </li>
         <li>
-          <a href="/src/pages/error/500.html">500</a>
+          <a href="/500" data-nav="/500">500</a>
         </li>
         <li>
-          <a href="/src/pages/chat/chat.html">Chat</a>
+          <a href="/chat" data-nav="/chat">Chat</a>
         </li>
       </ul>
     </nav>
+    <div class="app"></div>
+    <script type="module" src="./index.ts"></script>
   </body>
 </html>
