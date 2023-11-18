@@ -9,11 +9,11 @@ const tpl = `
   <ul class='messages__list'>
     {{{ messagesItems }}}
   </ul>
-  <form class='messages__footer'>
+  <div class='messages__footer'>
     <button class='messages__attach'></button>
     {{{ inputMessage }}}
-    <button class='messages__send' type='submit'></button>
-  </form>
+    <button class='messages__send'></button>
+  </div>
 `;
 
 export default tpl;

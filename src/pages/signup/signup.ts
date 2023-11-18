@@ -1,4 +1,4 @@
-import Input from '../../components/input';
+import InputBase from '../../components/inputBase';
 import FormAuth from '../../components/formAuth';
 import Button from '../../components/button';
 import CenterLayout from '../../components/layouts/center';
@@ -10,7 +10,7 @@ import {
   validatePhone,
 } from '../../utils/validate';
 
-const emailInput = new Input('div', {
+const emailInput = new InputBase('div', {
   type: 'text',
   name: 'email',
   id: 'email',
@@ -24,7 +24,7 @@ const emailInput = new Input('div', {
   validate: validateEmail,
 });
 
-const loginInput = new Input('div', {
+const loginInput = new InputBase('div', {
   type: 'text',
   name: 'login',
   id: 'login',
@@ -38,7 +38,7 @@ const loginInput = new Input('div', {
   validate: validateLogin,
 });
 
-const firstNameInput = new Input('div', {
+const firstNameInput = new InputBase('div', {
   type: 'text',
   name: 'first_name',
   id: 'first_name',
@@ -52,7 +52,7 @@ const firstNameInput = new Input('div', {
   validate: validateName,
 });
 
-const secondNameInput = new Input('div', {
+const secondNameInput = new InputBase('div', {
   type: 'text',
   name: 'second_name',
   id: 'second_name',
@@ -66,7 +66,7 @@ const secondNameInput = new Input('div', {
   validate: validateName,
 });
 
-const phoneInput = new Input('div', {
+const phoneInput = new InputBase('div', {
   type: 'text',
   name: 'phone',
   id: 'phone',
@@ -80,7 +80,7 @@ const phoneInput = new Input('div', {
   validate: validatePhone,
 });
 
-const passwordInput = new Input('div', {
+const passwordInput = new InputBase('div', {
   type: 'password',
   name: 'password',
   id: 'password',
@@ -94,7 +94,7 @@ const passwordInput = new Input('div', {
   validate: validatePassword,
 });
 
-const passwordRepeatInput = new Input('div', {
+const passwordRepeatInput = new InputBase('div', {
   type: 'password',
   name: 'password',
   id: 'password-repeat',

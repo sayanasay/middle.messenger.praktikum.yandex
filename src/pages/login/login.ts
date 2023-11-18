@@ -1,10 +1,10 @@
-import Input from '../../components/input';
+import InputBase from '../../components/inputBase';
 import FormAuth from '../../components/formAuth';
 import Button from '../../components/button';
 import CenterLayout from '../../components/layouts/center';
 import { validateLogin, validatePassword } from '../../utils/validate';
 
-const loginInput = new Input('div', {
+const loginInput = new InputBase('div', {
   type: 'text',
   name: 'login',
   id: 'login',
@@ -18,7 +18,7 @@ const loginInput = new Input('div', {
   validate: validateLogin,
 });
 
-const passwordInput = new Input('div', {
+const passwordInput = new InputBase('div', {
   type: 'password',
   name: 'password',
   id: 'password',

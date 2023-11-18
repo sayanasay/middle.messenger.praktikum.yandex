@@ -38,18 +38,3 @@
 ## Демоверсия
 [Netlify](https://deploy--zingy-banoffee-5b5585.netlify.app/) Главная со ссылками на все страницы
 
-[/login](https://deploy--zingy-banoffee-5b5585.netlify.app/src/pages/login/login) Страница входа
-
-[/signup](https://deploy--zingy-banoffee-5b5585.netlify.app/src/pages/signup/signup) Страница регистрации
-
-[/profile](https://deploy--zingy-banoffee-5b5585.netlify.app/src/pages/profile/profile) Страница профиля
-
-[/profile-edit](https://deploy--zingy-banoffee-5b5585.netlify.app/src/pages/profile/profile-edit) Страница редактирования профиля
-
-[/profile-edit-password](https://deploy--zingy-banoffee-5b5585.netlify.app/src/pages/profile/profile-edit-password) Страница редактирования пароля
-
-[/chat](https://deploy--zingy-banoffee-5b5585.netlify.app/src/pages/chat/chat) Страница чата
-
-[/404](https://deploy--zingy-banoffee-5b5585.netlify.app/src/pages/error/404) Страница 404
-
-[/500](https://deploy--zingy-banoffee-5b5585.netlify.app/src/pages/error/500) Страница 500

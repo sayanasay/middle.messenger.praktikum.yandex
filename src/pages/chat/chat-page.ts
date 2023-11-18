@@ -48,6 +48,10 @@ chats[0].messages.forEach((message) => {
 })
 
 const inputMessage = new InputMessage('div', {
+  type: 'text',
+  name: 'message',
+  placeholder: 'Сообщение',
+  value: '',
   validate: validateMessage,
   error: '',
   attrs: {

@@ -1,19 +1,18 @@
 import Block from '../../services/Block';
-import tpl from './tpl';
 import { BaseProps } from '../../services/types';
 
 type Props = {
   type: string;
   name: string;
-  id: string;
-  placeholder: string;
+  id?: string;
+  placeholder?: string;
   value: string;
-  label: string;
+  label?: string;
   error?: string;
   validate?: (value: string) => string;
 } & BaseProps;
 
-export default class Input extends Block<Props> {
+export default abstract class Input extends Block<Props> {
   constructor(tagName: string, props: Props) {
     props.events = {
       ...props.events,
@@ -25,7 +24,6 @@ export default class Input extends Block<Props> {
     };
     super(tagName, props);
   }
-  
 
   public addEvents() {
     const { events = {} } = this._props;
@@ -43,7 +41,7 @@ export default class Input extends Block<Props> {
   public validate(): string {
     const input = this._element.querySelector('input');
     this._props.error = '';
-
+    
     if (input) {
       const value = input.value;
       const error = this._props.validate?.(value.trim());
@@ -52,9 +50,5 @@ export default class Input extends Block<Props> {
       this.setProps(this._props);
     }
     return this._props.error;
-  }
-
-  public render() {
-    return this.compile(tpl, this._props);
   }
 }
