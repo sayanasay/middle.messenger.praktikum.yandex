@@ -1,6 +1,6 @@
 .input-large {
   width: 100%;
-  margin-bottom: 0;
+  margin-bottom: 12px;
   display: flex;
   justify-content: space-between;
   border-bottom: 1px solid #EAEAEA;
@@ -38,9 +38,8 @@
     font-size: 10px;
     line-height: 1;
     font-weight: 400;
-    top: 50%;
-    left: 35%;
-    transform: translateY(-50%);
+    right: 0;
+    top: 40px;
     margin: 0;
   }
 }
