@@ -1,19 +1,39 @@
 import { Error } from '../../components/error';
-import CenterLayout from '../../components/layouts/center';
+import router from '../../services/Router/Router';
+import { Routes } from '../../..';
+import Button from '../../components/button';
+import Block from '../../services/Block';
 
 const content =  new Error('div', {
   title: '500',
   text:'Мы уже фиксим',
-  link: '/',
-  'link-text': 'Назад к чатам',
+  link: new Button('a', {
+    text: 'Назад к чатам',
+    events: {
+      click: () => {
+        router.go(Routes.Messenger)
+      }
+    },
+    attrs: {
+      class: 'error__link'
+    }
+  }),
   attrs: {
     class: 'error'
   }
 });
 
-export const Page500 = new CenterLayout('main', {
-  content: content,
-  attrs: {
-    class: 'container container-center',
-  },
-});
+export class Page500 extends Block {
+  constructor(tag: string) {
+    super(tag, {
+      content: content,
+      attrs: {
+        class: 'container container-center',
+      },
+    });
+  }
+
+  public render() {
+    return this.compile('{{{ content }}}', this._props);
+  }
+}

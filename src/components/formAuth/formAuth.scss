@@ -22,9 +22,15 @@
     font-weight: 500;
     line-height: 1;
     margin-top: 14px;
+    cursor: pointer;
 
     &:hover {
       color: var(--blue-light);
     }
+  }
+
+  &__error {
+    color: var(--red);
+    margin: 10px 0;
   }
 }

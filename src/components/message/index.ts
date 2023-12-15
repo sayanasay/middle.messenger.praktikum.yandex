@@ -2,7 +2,7 @@ import Block from '../../services/Block';
 import tpl from './tpl';
 import { BaseProps } from '../../services/types';
 
-type Props = {
+export type Props = {
   text?: string,
   file?: string,
   time: string,

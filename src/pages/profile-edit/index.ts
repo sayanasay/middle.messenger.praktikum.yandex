@@ -1,1 +1,1 @@
-export { ProfileEditPage as default}  from './profile-edit';
+export { connectProfileEdit as default}  from './profile-edit';

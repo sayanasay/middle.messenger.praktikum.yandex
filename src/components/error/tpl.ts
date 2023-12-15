@@ -5,9 +5,7 @@ const tpl = `
   <p class='error__text'>
     {{text}}
   </p>
-  <a href={{link}} class='error__link' data-nav='/chat'>
-    {{link-text}}
-  </a>
+  {{{ link }}}
 `;
 
 export default tpl;

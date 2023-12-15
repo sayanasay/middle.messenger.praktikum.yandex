@@ -12,11 +12,22 @@
     &-header {
       padding: 20px 10px 14px;
       position: relative;
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: space-between;
     }
   }
 
   &__main {
     width: 100%;
+  }
+
+  &__create {
+    border: none;
+    background: none;
+    color: var(--grey-dark);
+    cursor: pointer;
+    margin-bottom: 24px;
   }
 
   &__link {
@@ -29,7 +40,7 @@
     display: flex;
     justify-content: end;
     align-items: center;
-    
+
     &-text {
       color: var(--grey-dark);
       transition: color 0.3s linear;

@@ -1,7 +1,5 @@
 const tpl = `
-  <a class='left' href='' data-nav='/chat'>
-    <div class='left__icon'></div>
-  </a>
+  {{{ toChatButton }}}
   <div class='main'>
     {{{content}}}
   </div>

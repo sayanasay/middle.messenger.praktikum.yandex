@@ -11,22 +11,17 @@
 }
 
 .left {
-  background-color: var(--grey-light);
   border-right: 1px solid var(--grey);
   width: 64px;
   display: flex;
   justify-content: center;
   align-items: center;
   transition: background-color 0.3s linear;
+  background: url('/src/assets/arrow.svg') no-repeat center var(--grey-light);
+  cursor: pointer;
 
   &:hover {
     background-color: var(--blue-light);
-  }
-
-  &__icon {
-    width: 28px;
-    height: 28px;
-    background: url('/src/assets/arrow.svg') no-repeat center;
   }
 }
 

@@ -21,6 +21,9 @@
   }
 
   &__image {
+    width: 130px;
+    height: 130px;
+    object-fit: cover;
     transition: opacity 0.3s linear;
   }
 

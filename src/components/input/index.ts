@@ -38,6 +38,10 @@ export default abstract class Input extends Block<Props> {
     return (this._element.querySelector('input') as HTMLInputElement).value;
   }
 
+  public getName() {
+    return (this._element.querySelector('input') as HTMLInputElement).name;
+  }
+
   public validate(): string {
     const input = this._element.querySelector('input');
     this._props.error = '';
