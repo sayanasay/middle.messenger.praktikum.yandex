@@ -1,0 +1,44 @@
+.modal {
+  &__content {
+    position: absolute;
+    top: 50%;
+    right: 50%;
+    transform: translateX(50%) translateY(-50%);
+    display: flex;
+    flex-direction: column;
+    background-color: var(--white);
+    width: 340px;
+    padding: 40px 30px;
+    border-radius: 12px;
+    box-shadow: 0 0 0 50vmax #00000080;
+  }
+
+  &__title {
+    text-align: center;
+    font-size: 16px;
+  }
+
+  &__btn {
+    margin-bottom: 15px;
+    font-size: 14px;
+    cursor: pointer;
+    transition: color 0.3s linear;
+
+    &:hover {
+      color: var(--blue);
+    }
+  }
+
+  &__close-btn {
+    text-align: center;
+    display: block;
+    margin-top: 10px;
+    color: var(--blue);
+    cursor: pointer;
+  }
+
+  &__error {
+    color: var(--red);
+    margin: 10px 0;
+  }
+}

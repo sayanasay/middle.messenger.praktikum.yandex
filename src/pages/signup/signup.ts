@@ -1,7 +1,6 @@
 import InputBase from '../../components/inputBase';
 import FormAuth from '../../components/formAuth';
 import Button from '../../components/button';
-import CenterLayout from '../../components/layouts/center';
 import {
   validateEmail,
   validateLogin,
@@ -9,6 +8,11 @@ import {
   validatePassword,
   validatePhone,
 } from '../../utils/validate';
+import Block from '../../services/Block';
+import { BaseProps } from '../../services/types';
+import AuthController from '../../services/Controllers/AuthController';
+import router from '../../services/Router/Router';
+import { Routes } from '../../..';
 
 const emailInput = new InputBase('div', {
   type: 'text',
@@ -139,7 +143,7 @@ const button = new Button('button', {
   text: 'Зарегистрироваться',
   attrs: {
     class: 'button',
-    type: 'submit'
+    type: 'submit',
   },
 });
 
@@ -155,16 +159,60 @@ const form = new FormAuth('form', {
   ],
   button: button,
   'form-name': 'Регистрация',
-  link: '/login',
-  'link-text': 'Войти',
+  link: new Button('a', {
+    text: 'Войти',
+    events: {
+      click: () => {
+        router.go(Routes.Login);
+      }
+    },
+    attrs: {
+      class: 'form-auth__link',
+    },
+  }),
   attrs: {
     class: 'form-auth',
   },
-});
+  events: {
+    submit: async (e) => {
+      e.preventDefault();
 
-export const SignupPage = new CenterLayout('main', {
-  content: form,
-  attrs: {
-    class: 'container container-center',
+      if (form.validate()) {
+        const response = await AuthController.signup({
+          email: emailInput.getValue(),
+          login: loginInput.getValue(),
+          first_name: firstNameInput.getValue(),
+          second_name: secondNameInput.getValue(),
+          phone: phoneInput.getValue(),
+          password: passwordInput.getValue(),
+        });
+        if (response.success) {
+          form.setProps({ error: null });
+          form.clearInputs();
+          router.go(Routes.Login);
+        } else {
+          form.setProps({ error: response.error?.reason });
+        }
+      }
+    },
   },
 });
+
+type Props = {
+  content: Block;
+} & BaseProps;
+
+export class SignupPage extends Block<Props> {
+  constructor(tag: string) {
+    super(tag, {
+      content: form,
+      attrs: {
+        class: 'container container-center',
+      },
+    });
+  }
+
+  public render() {
+    return this.compile('{{{ content }}}', this._props);
+  }
+}

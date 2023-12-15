@@ -3,8 +3,11 @@ const tpl = `
   <div class='login-inputs'>
   {{{ inputs }}}
   </div>
+  {{#if error}}
+  <div class='form-auth__error'>{{error}}</div>
+  {{/if}}
   {{{ button }}}
-  <a class='form-auth__link' href={{link}} data-nav={{link}}>{{link-text}}</a>
+  {{{ link }}}
 `;
 
 export default tpl;

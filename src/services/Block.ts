@@ -2,6 +2,7 @@ import EventBus from './EventBus';
 import { v4 as makeUUID } from 'uuid';
 import Handlebars from 'handlebars';
 import { BaseProps, SimpleProps, ChildrenProps } from './types';
+import isEqual from '../utils/isEqual';
 
 export default abstract class Block<Props extends BaseProps = BaseProps> {
   static EVENTS = {
@@ -12,7 +13,7 @@ export default abstract class Block<Props extends BaseProps = BaseProps> {
   };
 
   protected _props: SimpleProps<Props>;
-  protected _children: ChildrenProps<Props>;
+  protected _children: ChildrenProps;
   private _eventBus: EventBus;
   protected _element: HTMLElement | HTMLTemplateElement;
   private _meta: { 
@@ -27,8 +28,8 @@ export default abstract class Block<Props extends BaseProps = BaseProps> {
     this._eventBus = new EventBus();
     this._meta = { tagName };
     this._id = makeUUID();
-    this._children = this._makePropsProxy(children) as ChildrenProps<Props>;
-    this._props = this._makePropsProxy({ ...props, __id: this._id }) as SimpleProps<Props>;
+    this._children = this._makePropsProxy(children, this);
+    this._props = this._makePropsProxy({ ...props, __id: this._id }, this) as SimpleProps<Props>;
 
     this._registerEvents();
 
@@ -102,12 +103,11 @@ export default abstract class Block<Props extends BaseProps = BaseProps> {
     this._eventBus.emit(Block.EVENTS.FLOW_RENDER);
   }
 
-  public componentDidUpdate(oldProps?: Props, newProps?: Props) {
-    console.log(oldProps, newProps);
-    return true;
+  public componentDidUpdate(oldProps: Props, newProps: Props) {
+    return !isEqual(oldProps, newProps);
   }
 
-  public setProps = (nextProps: Partial<Props>) => {
+  public setProps(nextProps: Partial<Props>) {
     if (!nextProps) {
       return;
     }
@@ -129,7 +129,7 @@ export default abstract class Block<Props extends BaseProps = BaseProps> {
       this._eventBus.emit(Block.EVENTS.FLOW_CDU, oldProps, this._props);
       this._setUpdate = false;
     }
-  };
+  }
 
   get element() {
     return this._element;
@@ -195,7 +195,7 @@ export default abstract class Block<Props extends BaseProps = BaseProps> {
     return this._element;
   }
 
-  private _makePropsProxy<P extends Record<string, unknown>>(props: P) {
+  private _makePropsProxy<P extends Record<string, unknown>>(props: P, block: Block) {
     props = new Proxy(props, {
       get: (target, prop: string) => {
         const value = target[prop];
@@ -204,7 +204,7 @@ export default abstract class Block<Props extends BaseProps = BaseProps> {
       set: (target, prop: string, value) => {
         if (target[prop] !== value) {
           target[prop as keyof P] = value;
-          this._setUpdate = true;
+          block._setUpdate = true;
         }
         return true;
       },
