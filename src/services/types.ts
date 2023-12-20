@@ -12,6 +12,8 @@ export type SimpleProps<T extends Record<string, unknown>> = {
   [P in keyof T]: T[P] extends Block ? never : T[P];
 };
 
-export type ChildrenProps<T extends Record<string, unknown>> = {
-  [P in keyof T]: T[P] extends Block ? T[P] | T[P][] : never;
+export type ChildrenProps = Record<string, Block | Block[]>;
+
+export type BlockType = {
+  new(tagName: string, props: BaseProps): Block
 };

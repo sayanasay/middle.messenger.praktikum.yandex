@@ -1,10 +1,15 @@
-import ProfileLayout from '../../components/layouts/profile';
 import Button from '../../components/button';
 import InputLarge from '../../components/inputLarge';
 import FormProfile from '../../components/formProfile';
 import Avatar from '../../components/avatar';
 import { validatePassword } from '../../utils/validate';
 import imgUrl from '../../assets/default.jpg';
+import Block from '../../services/Block';
+import tpl from '../profile/tpl';
+import UserController from '../../services/Controllers/UserController';
+import { BaseProps } from '../../services/types';
+import connect from '../../services/Store/Connect';
+import isEqual from '../../utils/isEqual';
 
 const oldPasswordInput = new InputLarge('label', {
   type: 'password',
@@ -17,7 +22,7 @@ const oldPasswordInput = new InputLarge('label', {
   attrs: {
     class: 'input-large',
   },
-  validate: validatePassword
+  validate: validatePassword,
 });
 
 const newPasswordInput = new InputLarge('label', {
@@ -31,7 +36,7 @@ const newPasswordInput = new InputLarge('label', {
   attrs: {
     class: 'input-large',
   },
-  validate: validatePassword
+  validate: validatePassword,
 });
 
 const passwordRepeatInput = new InputLarge('label', {
@@ -45,7 +50,7 @@ const passwordRepeatInput = new InputLarge('label', {
   attrs: {
     class: 'input-large',
   },
-  validate: validatePassword
+  validate: validatePassword,
 });
 
 passwordRepeatInput.validate = () => {
@@ -83,25 +88,53 @@ const button = new Button('button', {
   },
 });
 
-const avatar = new Avatar('div', {
-  src: imgUrl,
-  attrs: {
-    class: 'avatar'
-  }
-});
+type Props = {
+  avatarImage: Avatar;
+  form: FormProfile;
+} & BaseProps;
 
-const form = new FormProfile('div', {
-  inputs: [oldPasswordInput, newPasswordInput, passwordRepeatInput],
-  button: button,
-  avatar: avatar,
-  attrs: {
-    class: 'profile',
-  },
-});
-
-export const EditPassword = new ProfileLayout('main', {
-  content: form,
-  attrs: {
-    class: 'container'
+class EditPassword extends Block<Props> {
+  constructor(tagName: string, props: Props) {
+    (props.avatarImage = new Avatar('div', {
+      src: props.avatar || imgUrl,
+    })),
+      (props.form = new FormProfile('form', {
+        inputs: [oldPasswordInput, newPasswordInput, passwordRepeatInput],
+        button: button,
+        events: {
+          submit: async (e) => {
+            e.preventDefault();
+            if (props.form.validate()) {
+              const response = await UserController.changePassword({
+                oldPassword: oldPasswordInput.getValue(),
+                newPassword: newPasswordInput.getValue(),
+              });
+              if (response.success) {
+                props.form.setProps({ error: null });
+                props.form.clearInputs();
+              } else {
+                props.form.setProps({ error: response.error?.reason });
+              }
+            }
+          },
+        },
+        attrs: {
+          class: 'profile__form',
+        },
+      })),
+      super(tagName, props);
   }
-})
+
+  public componentDidUpdate(oldProps: Props, newProps: Props): boolean {
+    (this._children.avatarImage as Block).setProps({src: newProps['avatar']});
+    return !isEqual(oldProps, newProps);
+  }
+
+  public render() {
+    return this.compile(tpl, this._props);
+  }
+}
+
+export const connectEditPassword = connect(EditPassword, (state) => ({
+  avatar: state.user?.avatar,
+}));

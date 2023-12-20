@@ -35,6 +35,15 @@
 ## Дизайн
 [Figma](https://www.figma.com/file/VYqs1JUo3CXoCioIoc86mY/Chat?type=design&node-id=0%3A1&mode=design&t=jksor0rEvQ4IhVMX-1)
 
-## Демоверсия
-[Netlify](https://deploy--zingy-banoffee-5b5585.netlify.app/) Главная со ссылками на все страницы
+## Демоверсия на Netlify
+[Страница входа](https://deploy--zingy-banoffee-5b5585.netlify.app/) 
 
+[Страница регистрации](https://zingy-banoffee-5b5585.netlify.app/sign-up) 
+
+[Настройки профиля пользователя](https://zingy-banoffee-5b5585.netlify.app/settings)
+
+[Редактирование профиля пользователя](https://zingy-banoffee-5b5585.netlify.app/edit-profile)
+
+[Редактирование пароля пользователя](https://zingy-banoffee-5b5585.netlify.app/edit-password)
+
+[Страница чата](https://zingy-banoffee-5b5585.netlify.app/messenger)

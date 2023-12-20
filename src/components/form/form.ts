@@ -2,31 +2,18 @@ import Block from '../../services/Block';
 import { BaseProps } from '../../services/types';
 import Input from '../input';
 
-type FormProps = {
+export type FormProps = {
+  name?: string;
   inputs: Input[];
   button?: Block;
   'form-name'?: string;
-  link?: string;
+  link?: Block;
   'link-text'?: string;
   avatar?: Block;
   buttons?: boolean;
 } & BaseProps;
 
 export default abstract class Form<Props extends FormProps = FormProps> extends Block<Props> {
-  constructor(tagName: string, props: Props) {
-    props.events = {
-      submit: (e) => {
-        e.preventDefault();
-
-        if (this.validate()) {
-          const formData = new FormData(e.target as HTMLFormElement);
-          console.log(JSON.stringify(Object.fromEntries(formData)));
-        }
-      },
-    };
-    super(tagName, props);
-  }
-
   public validate(): boolean {
     const inputs = this._children.inputs as Input[];
 
@@ -35,5 +22,17 @@ export default abstract class Form<Props extends FormProps = FormProps> extends 
       return false;
     }
     return true;
+  }
+
+  public getInputs(): Input[] {
+    return this._children.inputs as Input[];
+  }
+
+  public clearInputs() {
+    const inputs = this._children.inputs as Input[];
+
+    inputs.forEach((input) => {
+      input.setProps({ value: '' });
+    });
   }
 }
