@@ -12,7 +12,7 @@ const getParams = (data: PlainObject | [], parentKey?: string) => {
     if (isArrayOrObject(value)) {
       result.push(...getParams(value, getKey(key, parentKey)));
     } else {
-      result.push([getKey(key, parentKey), encodeURIComponent(String(value))]);
+      result.push([encodeURIComponent(getKey(key, parentKey)), encodeURIComponent(String(value))]);
     }
   }
 

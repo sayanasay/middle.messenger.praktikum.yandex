@@ -1,9 +1,10 @@
 {
   "compilerOptions": {
     "outDir": "dist",
-    "target": "es2016",
+    "target": "ES2020",
     "declaration": false,
-    "module": "commonjs",
+    "module": "ESNext",
+    "moduleResolution": "node",
     "strictNullChecks": true,
     "sourceMap": true,
     "noImplicitAny": true,
@@ -12,5 +13,9 @@
     "isolatedModules": true,
     "esModuleInterop": true,
     "noEmit": true
+  },
+  "ts-node": {
+    "esm": true,
+    "experimentalSpecifierResolution": "node"
   }
 }
