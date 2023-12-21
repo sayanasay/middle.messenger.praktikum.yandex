@@ -97,6 +97,22 @@ export default class ChatController {
     }
   }
 
+  static async changeAvatar(data: FormData) {
+    try {
+      await chatApi.changeChatAvatar(data);
+      await this.getChats();
+      return {
+        success: true,
+        error: null,
+      };
+    } catch (error) {
+      return {
+        success: false,
+        error: error,
+      };
+    }
+  }
+
   static async getToken(id: number) {
     return chatApi.getToken(id);
   }

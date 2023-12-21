@@ -11,6 +11,7 @@ import Store from '../../services/Store';
 import ChatController from '../../services/Controllers/ChatController';
 import FormAuth from '../formAuth';
 import { validateMessage } from '../../utils/validate';
+import InputFile from '../inputFile';
 
 const addUserInput = new InputBase('div', {
   type: 'text',
@@ -136,6 +137,60 @@ const deleteUserModal = new Modal('div', {
   },
 });
 
+const changeAvatarModal = new Modal('div', {
+  title: 'Загрузите файл',
+  content: new FormAuth('form', {
+    inputs: [
+      new InputFile('div', {
+        type: 'file',
+        name: 'file',
+        value: '',
+        label: 'Выбрать файл на компьютере',
+      })
+    ],
+    button: new Button('button', {
+      text: 'Поменять',
+      attrs: {
+        class: 'button',
+      },
+    }),
+    events: {
+      submit: async (e) => {
+        e.preventDefault();
+        const formData = new FormData();
+        const avatar = document.getElementById('file') as HTMLInputElement;
+        const chatId = Store.getState()?.current_chat;
+        if (chatId && avatar && avatar.files) {
+          const file = avatar.files[0];
+          formData.append('avatar', file);
+          formData.append('chatId', chatId.toString());
+          const response = await ChatController.changeAvatar(formData);
+          if (response.success) {
+            changeAvatarModal.setProps({ error: null });
+            changeAvatarModal.hide();
+          } else {
+            changeAvatarModal.setProps({ error: response.error?.reason });
+          }
+        }
+      },
+    },
+  }),
+  closeButton: new Button('a', {
+    text: 'Отмена',
+    events: {
+      click: () => {
+        changeAvatarModal.hide();
+      }
+    },
+    attrs: {
+      class: 'modal__close-btn',
+    },
+  }),
+  attrs: {
+    class: 'modal__content',
+  },
+});
+
 const settingsModal = new Modal('div', {
   title: '',
   content: [
@@ -158,6 +213,19 @@ const settingsModal = new Modal('div', {
         click: () => {
           render('.modal', deleteUserModal);
           deleteUserModal.show();
+          settingsModal.hide();
+        },
+      },
+      attrs: {
+        class: 'modal__btn',
+      },
+    }),
+    new Button('div', {
+      text: 'Изменить аватар чата',
+      events: {
+        click: () => {
+          render('.modal', changeAvatarModal);
+          changeAvatarModal.show();
           settingsModal.hide();
         },
       },
