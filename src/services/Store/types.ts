@@ -12,7 +12,7 @@ export type User = {
 export type Chat = {
   id: number,
   title: string,
-  avatar: string,
+  avatar: string | null,
   unread_count: number,
   created_by: number,
   last_message: LastMessage,
