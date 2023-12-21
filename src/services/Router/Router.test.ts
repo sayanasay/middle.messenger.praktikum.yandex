@@ -1,7 +1,7 @@
-import Router from './Router/Router';
+import Router from './Router';
 import { expect } from 'chai';
 import { beforeEach } from 'mocha';
-import Block from './Block';
+import Block from '../Block';
 
 describe('Router', () => {
   class TestPage extends Block {
