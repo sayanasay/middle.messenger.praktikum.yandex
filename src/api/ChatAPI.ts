@@ -25,7 +25,7 @@ export class ChatAPI {
     return this.authAPIInstance.delete('', { data: { chatId } });
   }
 
-  public changeChatAvatar(data: { chatId: number; avatar: FormData }) {
+  public changeChatAvatar(data: FormData) {
     return this.authAPIInstance.put('/avatar', { data });
   }
 
